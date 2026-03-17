@@ -65,6 +65,7 @@ const AdminProjects = () => {
         description: form.description,
         services: form.services.split(",").map((s) => s.trim()).filter(Boolean),
         color: form.color,
+        thumbnail_url: form.thumbnail_url || null,
       };
       if (isNew) {
         const { error } = await supabase.from("projects").insert(payload);
