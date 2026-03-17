@@ -21,8 +21,12 @@ const ClientLogosMarquee = () => {
 
   const logos = dbLogos && dbLogos.length > 0 ? dbLogos : staticClients.map((name) => ({ name, logo_url: null }));
 
+  // Ensure enough items to fill the screen by repeating
+  const repeatCount = Math.max(4, Math.ceil(12 / logos.length));
+  const filledLogos = Array.from({ length: repeatCount }, () => logos).flat();
+
   const renderItems = () =>
-    logos.map((logo, i) => (
+    filledLogos.map((logo, i) => (
       <div key={i} className="flex items-center justify-center px-10 shrink-0">
         {logo.logo_url ? (
           <img src={logo.logo_url} alt={logo.name} className="h-10 w-auto max-w-[160px] object-contain opacity-70 hover:opacity-100 transition-opacity" />
