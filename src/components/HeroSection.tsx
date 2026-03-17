@@ -5,10 +5,10 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Blue-to-white gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.18] via-primary/[0.06] to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.45] via-primary/[0.15] to-transparent" />
       
       {/* Geometric column shapes at top */}
-      <div className="absolute top-0 left-0 right-0 h-[340px] overflow-hidden opacity-[0.35]">
+      <div className="absolute top-0 left-0 right-0 h-[340px] overflow-hidden opacity-[0.7]">
         <div className="absolute inset-0 flex justify-center gap-3 px-4">
           {[...Array(9)].map((_, i) => (
             <div
@@ -16,7 +16,7 @@ const HeroSection = () => {
               className="shrink-0 w-[140px] lg:w-[160px] rounded-b-3xl"
               style={{
                 height: `${180 + Math.sin(i * 0.8) * 60}px`,
-                background: `linear-gradient(180deg, hsl(241 99% 56% / ${0.3 - i * 0.02}) 0%, hsl(241 99% 56% / 0.05) 100%)`,
+                background: `linear-gradient(180deg, hsl(241 99% 56% / ${0.6 - i * 0.03}) 0%, hsl(241 99% 56% / 0.1) 100%)`,
               }}
             />
           ))}
@@ -24,7 +24,7 @@ const HeroSection = () => {
       </div>
 
       {/* Radial glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,hsl(241_99%_56%/0.12)_0%,transparent_70%)]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,hsl(241_99%_56%/0.3)_0%,transparent_70%)]" />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
