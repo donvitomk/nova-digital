@@ -11,7 +11,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-8">
-            {["Services", "Results", "Testimonials", "FAQ"].map((link) => (
+            {["Services", "Our Work", "Results", "Testimonials", "FAQ"].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
