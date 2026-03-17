@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const projects = [
   {
