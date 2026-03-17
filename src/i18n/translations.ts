@@ -12,8 +12,8 @@ const translations = {
   hero: {
     badge: { en: "Social media & creative agency", mk: "Агенција за социјални медиуми и креатива" },
     heading1: { en: "Your brand", mk: "На твојот бренд" },
-    heading2: { en: "needs better", mk: "му треба подобар" },
-    heading3: { en: "content", mk: "содржај" },
+    heading2: { en: "needs better", mk: "му треба подобра" },
+    heading3: { en: "content", mk: "содржина" },
     description: {
       en: "NOVA is a creative agency that builds bold brands through social media, stunning design, and scroll-stopping content.",
       mk: "NOVA е креативна агенција која гради смели брендови преку социјални медиуми, неверојатен дизајн и содржина што го привлекува вниманието.",
