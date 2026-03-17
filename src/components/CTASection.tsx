@@ -3,9 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 gradient-radial-hero" />
-      <div className="absolute inset-0 gradient-blob-1" />
+    <section id="contact" className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(241 99% 56%) 0%, hsl(241 99% 48%) 100%)' }}>
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -14,16 +12,16 @@ const CTASection = () => {
           transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-primary-foreground text-balance">
             Ready to level up your brand?
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-md mx-auto">
+          <p className="mt-4 text-primary-foreground/70 max-w-md mx-auto">
             Book a free creative consultation. We'll review your brand and show you exactly how to stand out.
           </p>
           <div className="mt-10">
             <a
               href="mailto:hello@nova.agency"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_hsl(241_99%_56%/0.35)]"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-background text-foreground font-medium transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(255,255,255,0.25)]"
             >
               Book Free Consultation <ArrowRight size={16} />
             </a>
