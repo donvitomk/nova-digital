@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Globe, Palette, Play, Sparkles, Code } from "lucide-react";
+import { Share2, Globe, Palette, Play, Sparkles, Code } from "lucide-react";
 
 const services = [
   {
