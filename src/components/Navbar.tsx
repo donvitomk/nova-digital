@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <div className="w-full max-w-4xl bg-background/80 backdrop-blur-xl rounded-full border border-border shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex items-center justify-between h-14 px-3 pl-5">
         <a href="#" className="flex items-center gap-2.5 shrink-0">
-          <img src={logo} alt="NOVA" className="h-9 w-auto invert" />
+          <img src={logo} alt="NOVA" className="h-12 w-auto invert" />
           <span className="text-xl font-bold tracking-tight text-foreground">NOVA</span>
         </a>
 
