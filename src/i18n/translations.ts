@@ -16,7 +16,7 @@ const translations = {
     heading3: { en: "content", mk: "содржина" },
     description: {
       en: "We help businesses grow with strategic digital marketing, eye-catching design, and content that converts.",
-      mk: "Им помагаме на бизнисите да растат со стратешки дигитален маркетинг, впечатлив дизајн и содржина која конвертира.",
+      mk: "Им помагаме на бизнисите да растат со стратешки дигитален маркетинг, впечатлив дизајн и содржина која привлекува.",
     },
     learnMore: { en: "Learn More", mk: "Дознај Повеќе" },
     getStarted: { en: "Get Started", mk: "Започни" },
