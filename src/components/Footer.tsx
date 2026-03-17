@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className="bg-foreground py-12">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center gap-6 text-center">
           <div className="flex items-center gap-2.5">
             <img src={logo} alt="NOVA" className="h-10 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
             <span className="text-base font-bold tracking-tight text-background">NOVA</span>
