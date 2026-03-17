@@ -70,7 +70,7 @@ const AdminLogos = () => {
       <div className="p-6 rounded-xl border border-border bg-secondary/30 space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
           <div><Label>Client Name</Label><Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Brand name" /></div>
-          <div><Label>Logo Image (optional)</Label><Input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] || null)} /></div>
+          <div><Label>Logo Image (PNG, 400×160px recommended, transparent background)</Label><Input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] || null)} /></div>
         </div>
         <Button onClick={() => addMutation.mutate()} disabled={!name || addMutation.isPending}>
           <Plus size={16} className="mr-2" /> {addMutation.isPending ? "Adding..." : "Add Logo"}
