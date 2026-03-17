@@ -80,13 +80,13 @@ const HeroSection = () => {
         >
           <a
             href="#services"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border text-foreground font-medium transition-all hover:bg-secondary"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-border text-foreground font-medium transition-all hover:bg-secondary text-sm sm:text-base whitespace-nowrap"
           >
             {t(translations.hero.learnMore)}
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-medium transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_hsl(241_99%_56%/0.35)]"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-primary text-primary-foreground font-medium transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_hsl(241_99%_56%/0.35)] text-sm sm:text-base whitespace-nowrap"
           >
             {t(translations.hero.getStarted)} <ArrowRight size={16} />
           </a>
