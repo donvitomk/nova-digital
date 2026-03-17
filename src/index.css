@@ -92,11 +92,11 @@
   }
 
   .marquee {
-    animation: marquee 15s linear infinite;
+    animation: marquee 3s linear infinite;
   }
 
   .marquee-logos {
-    animation: marquee 12s linear infinite;
+    animation: marquee 2.4s linear infinite;
   }
 
   .text-gradient-primary {
