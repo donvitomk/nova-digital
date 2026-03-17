@@ -12,21 +12,24 @@ const metrics = [
 
 const MetricMarquee = () => {
   const { t } = useLanguage();
-  const doubled = [...metrics, ...metrics];
+
+  const renderItems = () =>
+    metrics.map((m, i) => (
+      <div key={i} className="flex items-center gap-3 px-10 shrink-0">
+        <span className="font-mono text-2xl font-semibold text-primary tabular-nums">
+          {m.value}
+        </span>
+        <span className="text-sm text-muted-foreground whitespace-nowrap">
+          {t(translations.metrics[m.labelKey])}
+        </span>
+      </div>
+    ));
 
   return (
     <section className="py-12 border-y border-border overflow-hidden">
       <div className="flex marquee">
-        {doubled.map((m, i) => (
-          <div key={i} className="flex items-center gap-3 px-10 shrink-0">
-            <span className="font-mono text-2xl font-semibold text-primary tabular-nums">
-              {m.value}
-            </span>
-            <span className="text-sm text-muted-foreground whitespace-nowrap">
-              {t(translations.metrics[m.labelKey])}
-            </span>
-          </div>
-        ))}
+        <div className="flex shrink-0">{renderItems()}</div>
+        <div className="flex shrink-0">{renderItems()}</div>
       </div>
     </section>
   );
