@@ -85,7 +85,7 @@ const projects = [
   },
 ];
 
-type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean };
+type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean; thumbnail_url?: string | null };
 
 const OurWorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
@@ -122,6 +122,7 @@ const OurWorkSection = () => {
           description: p.description,
           services: p.services || [],
           gallery: [],
+          thumbnail_url: (p as any).thumbnail_url || null,
         }))
       : []),
     ...projects,
@@ -161,10 +162,14 @@ const OurWorkSection = () => {
                 onClick={() => setSelectedProject(project)}
                 className="group relative rounded-2xl overflow-hidden card-glass card-glass-hover cursor-pointer"
               >
-                <div className={`h-52 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                  <span className="text-5xl font-bold text-foreground/10 group-hover:text-foreground/20 transition-colors">
-                    {project.title.charAt(0)}
-                  </span>
+                <div className={`h-52 bg-gradient-to-br ${project.color} flex items-center justify-center overflow-hidden`}>
+                  {project.thumbnail_url ? (
+                    <img src={project.thumbnail_url} alt={project.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-5xl font-bold text-foreground/10 group-hover:text-foreground/20 transition-colors">
+                      {project.title.charAt(0)}
+                    </span>
+                  )}
                 </div>
                 <div className="p-6">
                   <p className="text-xs text-primary font-medium uppercase tracking-wide mb-1">{project.category}</p>
@@ -231,11 +236,11 @@ const OurWorkSection = () => {
               <div className="flex flex-col gap-4">
                 {selectedProject.isDb && dbGallery && dbGallery.length > 0
                   ? dbGallery.map((item) => (
-                      <div key={item.id} className="rounded-xl w-full aspect-video overflow-hidden relative bg-muted">
+                      <div key={item.id} className="rounded-xl w-full overflow-hidden relative bg-muted">
                         {item.type === "video" && item.file_url ? (
-                          <video src={item.file_url} controls className="w-full h-full object-cover" />
+                          <video src={item.file_url} controls className="w-full h-auto" />
                         ) : item.file_url ? (
-                          <img src={item.file_url} alt={item.label} className="w-full h-full object-cover" />
+                          <img src={item.file_url} alt={item.label} className="w-full h-auto" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
                             <span className="text-sm font-medium text-foreground/50">{item.label}</span>

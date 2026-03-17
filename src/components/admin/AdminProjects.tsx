@@ -25,13 +25,15 @@ interface Project {
   services: string[];
   color: string;
   display_order: number;
+  thumbnail_url: string | null;
 }
 
 const AdminProjects = () => {
   const qc = useQueryClient();
   const [editing, setEditing] = useState<Project | null>(null);
   const [isNew, setIsNew] = useState(false);
-  const [form, setForm] = useState({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20" });
+  const [form, setForm] = useState({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20", thumbnail_url: "" });
+  const [thumbnailUploading, setThumbnailUploading] = useState(false);
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
@@ -63,6 +65,7 @@ const AdminProjects = () => {
         description: form.description,
         services: form.services.split(",").map((s) => s.trim()).filter(Boolean),
         color: form.color,
+        thumbnail_url: form.thumbnail_url || null,
       };
       if (isNew) {
         const { error } = await supabase.from("projects").insert(payload);
@@ -117,16 +120,31 @@ const AdminProjects = () => {
     toast.success("Gallery item removed");
   };
 
+  const uploadThumbnail = async (file: File) => {
+    setThumbnailUploading(true);
+    try {
+      const ext = file.name.split(".").pop();
+      const path = `thumbnails/${Date.now()}.${ext}`;
+      const { error: uploadError } = await supabase.storage.from("media").upload(path, file);
+      if (uploadError) { toast.error("Thumbnail upload failed"); return; }
+      const { data: urlData } = supabase.storage.from("media").getPublicUrl(path);
+      setForm((prev) => ({ ...prev, thumbnail_url: urlData.publicUrl }));
+      toast.success("Thumbnail uploaded");
+    } finally {
+      setThumbnailUploading(false);
+    }
+  };
+
   const startEdit = (p: Project) => {
     setEditing(p);
     setIsNew(false);
-    setForm({ title: p.title, category: p.category, description: p.description, services: p.services.join(", "), color: p.color });
+    setForm({ title: p.title, category: p.category, description: p.description, services: p.services.join(", "), color: p.color, thumbnail_url: p.thumbnail_url || "" });
   };
 
   const startNew = () => {
     setEditing(null);
     setIsNew(true);
-    setForm({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20" });
+    setForm({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20", thumbnail_url: "" });
   };
 
   if (isLoading) return <p className="text-muted-foreground">Loading...</p>;
@@ -151,6 +169,23 @@ const AdminProjects = () => {
           <div><Label>Description</Label><Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></div>
           <div><Label>Services (comma separated)</Label><Input value={form.services} onChange={(e) => setForm({ ...form, services: e.target.value })} /></div>
           <div><Label>Gradient Color</Label><Input value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} placeholder="from-pink-500/20 to-purple-500/20" /></div>
+          <div className="space-y-2">
+            <Label>Thumbnail (Recommended: 1200×630px, 16:9 ratio, JPG/PNG)</Label>
+            {form.thumbnail_url && (
+              <img src={form.thumbnail_url} alt="Thumbnail preview" className="w-48 rounded-lg border border-border object-cover" />
+            )}
+            <Input
+              type="file"
+              accept="image/*"
+              disabled={thumbnailUploading}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) uploadThumbnail(file);
+                e.target.value = "";
+              }}
+            />
+            {thumbnailUploading && <p className="text-xs text-muted-foreground">Uploading...</p>}
+          </div>
           <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending}>
             {saveMutation.isPending ? "Saving..." : "Save Project"}
           </Button>
