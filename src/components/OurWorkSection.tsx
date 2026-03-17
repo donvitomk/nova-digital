@@ -200,13 +200,30 @@ const OurWorkSection = () => {
               </div>
 
               <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">Project Gallery</h4>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="flex flex-col gap-4">
                 {selectedProject.gallery.map((item, i) => (
                   <div
                     key={i}
-                    className={`bg-gradient-to-br ${item.color} rounded-xl h-36 flex items-center justify-center`}
+                    className={`bg-gradient-to-br ${item.color} rounded-xl w-full aspect-video flex items-center justify-center relative overflow-hidden`}
                   >
-                    <span className="text-sm font-medium text-foreground/50">{item.label}</span>
+                    {item.type === "video" && item.src ? (
+                      <video
+                        src={item.src}
+                        controls
+                        className="w-full h-full object-cover rounded-xl"
+                      />
+                    ) : item.type === "video" ? (
+                      <>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-full bg-foreground/10 backdrop-blur-sm flex items-center justify-center">
+                            <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-foreground/50 border-b-[10px] border-b-transparent ml-1" />
+                          </div>
+                        </div>
+                        <span className="absolute bottom-3 left-3 text-sm font-medium text-foreground/50">{item.label}</span>
+                      </>
+                    ) : (
+                      <span className="text-sm font-medium text-foreground/50">{item.label}</span>
+                    )}
                   </div>
                 ))}
               </div>
