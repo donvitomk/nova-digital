@@ -32,7 +32,7 @@ const HeroSection = () => {
       </div>
 
       {/* Center white radial behind text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,white_0%,transparent_70%)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[900px] bg-[radial-gradient(ellipse_60%_55%_at_50%_50%,white_0%,transparent_65%)]" />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
