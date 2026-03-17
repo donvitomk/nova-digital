@@ -1,13 +1,17 @@
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
+
 const metrics = [
-  { value: "20+", label: "Brands Transformed" },
-  { value: "1M+", label: "Social Impressions" },
-  { value: "3x", label: "Avg. Engagement Growth" },
-  { value: "10+", label: "Websites Launched" },
-  { value: "98%", label: "Client Retention" },
-  { value: "1000+", label: "Designs Delivered" },
+  { value: "20+", labelKey: "brandsTransformed" as const },
+  { value: "1M+", labelKey: "socialImpressions" as const },
+  { value: "3x", labelKey: "avgEngagement" as const },
+  { value: "10+", labelKey: "websitesLaunched" as const },
+  { value: "98%", labelKey: "clientRetention" as const },
+  { value: "1000+", labelKey: "designsDelivered" as const },
 ];
 
 const MetricMarquee = () => {
+  const { t } = useLanguage();
   const doubled = [...metrics, ...metrics];
 
   return (
@@ -19,7 +23,7 @@ const MetricMarquee = () => {
               {m.value}
             </span>
             <span className="text-sm text-muted-foreground whitespace-nowrap">
-              {m.label}
+              {t(translations.metrics[m.labelKey])}
             </span>
           </div>
         ))}

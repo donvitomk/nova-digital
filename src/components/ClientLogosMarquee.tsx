@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const staticClients = [
   "Bloom Beauty", "Altitude Fitness", "Vibe Co.", "Luxe Interiors",
@@ -7,6 +9,7 @@ const staticClients = [
 ];
 
 const ClientLogosMarquee = () => {
+  const { t } = useLanguage();
   const { data: dbLogos } = useQuery({
     queryKey: ["client-logos"],
     queryFn: async () => {
@@ -17,7 +20,6 @@ const ClientLogosMarquee = () => {
   });
 
   const logos = dbLogos && dbLogos.length > 0 ? dbLogos : staticClients.map((name) => ({ name, logo_url: null }));
-  // Ensure enough items for a smooth marquee by repeating
   const minItems = Math.max(1, Math.ceil(10 / logos.length));
   const filled = Array.from({ length: minItems }, () => logos).flat();
   const doubled = [...filled, ...filled];
@@ -25,8 +27,8 @@ const ClientLogosMarquee = () => {
   return (
     <section className="py-16 overflow-hidden">
       <div className="container mx-auto px-6 mb-10 text-center">
-        <p className="text-sm font-medium text-primary tracking-wide uppercase">Trusted By</p>
-        <h3 className="mt-2 text-xl font-semibold text-foreground">Brands we've worked with</h3>
+        <p className="text-sm font-medium text-primary tracking-wide uppercase">{t(translations.clientLogos.trustedBy)}</p>
+        <h3 className="mt-2 text-xl font-semibold text-foreground">{t(translations.clientLogos.brandsWorkedWith)}</h3>
       </div>
       <div className="flex marquee-logos">
         {doubled.map((logo, i) => (
