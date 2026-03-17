@@ -20,19 +20,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   const checkAdmin = async (userId: string) => {
-    const { data, error } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .eq("role", "admin")
-      .maybeSingle();
+    const { data, error } = await supabase.rpc("has_role", {
+      _user_id: userId,
+      _role: "admin",
+    });
 
     if (error) {
       console.error("Failed to load admin role", error);
       return false;
     }
 
-    return !!data;
+    return Boolean(data);
   };
 
   useEffect(() => {
@@ -41,6 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const syncSessionState = async (nextSession: Session | null) => {
       if (!isMounted) return;
 
+      setLoading(true);
       setSession(nextSession);
       setUser(nextSession?.user ?? null);
 
@@ -50,11 +49,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
 
-      const admin = await checkAdmin(nextSession.user.id);
+      try {
+        const admin = await checkAdmin(nextSession.user.id);
 
-      if (!isMounted) return;
-      setIsAdmin(admin);
-      setLoading(false);
+        if (!isMounted) return;
+        setIsAdmin(admin);
+      } catch (error) {
+        console.error("Unexpected admin sync error", error);
+        if (!isMounted) return;
+        setIsAdmin(false);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
     };
 
     const {
