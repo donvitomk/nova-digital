@@ -2,13 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 
-type GalleryItem = {
-  label: string;
-  color: string;
-  type: "image" | "video";
-  src?: string;
-};
-
 const projects = [
   {
     title: "Bloom Beauty",
