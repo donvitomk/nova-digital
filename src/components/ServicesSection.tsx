@@ -1,36 +1,31 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Search, Megaphone, Target, Zap, Globe } from "lucide-react";
+import { ArrowRight, Share2, Globe, Palette, Play, Sparkles } from "lucide-react";
 
 const services = [
   {
-    icon: BarChart3,
-    title: "Performance Marketing",
-    description: "Paid media campaigns engineered for conversion, not vanity metrics. Every dollar tracked.",
-  },
-  {
-    icon: Search,
-    title: "Performance SEO",
-    description: "Technical audits and content clusters designed for conversion, not just traffic.",
-  },
-  {
-    icon: Megaphone,
-    title: "Social Media Growth",
-    description: "Data-informed content strategies that build audiences and drive measurable engagement.",
-  },
-  {
-    icon: Target,
-    title: "Conversion Optimization",
-    description: "A/B testing, funnel analysis, and UX improvements that directly increase revenue.",
-  },
-  {
-    icon: Zap,
-    title: "Marketing Automation",
-    description: "Instant setup. Direct API connectivity. Workflows that nurture leads at scale.",
+    icon: Share2,
+    title: "Social Media Marketing",
+    description: "Strategy, content calendars, and community management that grow your audience and drive real engagement.",
   },
   {
     icon: Globe,
-    title: "Web Analytics & BI",
-    description: "Custom dashboards and attribution models so you see exactly where growth comes from.",
+    title: "Website Design",
+    description: "Custom websites built for conversion — fast, responsive, and designed to make your brand unforgettable.",
+  },
+  {
+    icon: Palette,
+    title: "Graphic Design",
+    description: "From social posts to print campaigns, we create visuals that stop the scroll and communicate your story.",
+  },
+  {
+    icon: Play,
+    title: "Motion Graphic Design",
+    description: "Animated content that captivates — reels, explainers, and video graphics that bring your brand to life.",
+  },
+  {
+    icon: Sparkles,
+    title: "Branding",
+    description: "Complete brand identity systems — logo, typography, color, voice — that make you instantly recognizable.",
   },
 ];
 
@@ -45,12 +40,12 @@ const ServicesSection = () => {
           transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">What we do</p>
+          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Our Services</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
-            Full-stack growth engine
+            Everything your brand needs
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Six core capabilities. One relentless focus on your bottom line.
+            Five core creative services. One unified vision for your brand.
           </p>
         </motion.div>
 
@@ -71,7 +66,7 @@ const ServicesSection = () => {
                 <h3 className="text-lg font-semibold text-foreground mb-3">{service.title}</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
                 <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                  Explore <ArrowRight size={14} />
+                  Learn More <ArrowRight size={14} />
                 </div>
               </div>
             </motion.div>

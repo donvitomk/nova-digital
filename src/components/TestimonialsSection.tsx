@@ -3,19 +3,19 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "NOVA transformed our marketing operations. We saw a 40% ROI increase within the first quarter.",
+    quote: "NOVA completely transformed our social media presence. Our engagement tripled in just two months.",
     author: "Sarah Chen",
-    role: "CMO, TechScale",
+    role: "Founder, Bloom Beauty",
   },
   {
-    quote: "Their data-driven approach eliminated the guesswork. We finally know exactly where every dollar goes.",
+    quote: "The branding and website they created for us is stunning. We get compliments from clients every single day.",
     author: "Marcus Rodriguez",
-    role: "Founder, GrowthLab",
+    role: "CEO, Altitude Fitness",
   },
   {
-    quote: "The team at NOVA operates with precision. Our customer acquisition cost dropped by half in 6 months.",
+    quote: "Their motion graphics took our content to the next level. Our reels consistently hit 100K+ views now.",
     author: "Emily Park",
-    role: "VP Marketing, Velocita",
+    role: "Marketing Director, Vibe Co.",
   },
 ];
 

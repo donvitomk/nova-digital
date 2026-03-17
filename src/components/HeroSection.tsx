@@ -50,7 +50,7 @@ const HeroSection = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background border border-border text-sm text-muted-foreground mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Performance-driven digital marketing
+          Social media & creative agency
         </motion.div>
 
         <motion.h1
@@ -68,7 +68,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
           className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto"
         >
-          NOVA helps ambitious brands achieve predictable growth with data-driven campaigns, precision targeting, and measurable ROI.
+          NOVA is a creative agency that builds bold brands through social media, stunning design, and scroll-stopping content.
         </motion.p>
 
         <motion.div
