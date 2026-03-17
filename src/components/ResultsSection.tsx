@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "3x", label: "Average engagement growth" },
-  { value: "500+", label: "Brands we've built" },
-  { value: "10M+", label: "Social impressions generated" },
+  { value: "20+", label: "Brands we've built" },
+  { value: "1M+", label: "Social impressions generated" },
   { value: "98%", label: "Client satisfaction rate" },
 ];
 
