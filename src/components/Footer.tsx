@@ -11,13 +11,19 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-8">
-            {["Services", "Our Work", "Results", "Testimonials", "FAQ"].map((link) => (
+            {[
+              { label: "Services", href: "#services" },
+              { label: "Our Work", href: "#work" },
+              { label: "Results", href: "#results" },
+              { label: "Testimonials", href: "#testimonials" },
+              { label: "FAQ", href: "#faq" },
+            ].map((link) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                key={link.label}
+                href={link.href}
                 className="text-xs text-background/70 hover:text-background transition-colors"
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
