@@ -236,7 +236,7 @@ const OurWorkSection = () => {
               <div className="flex flex-col gap-4">
                 {selectedProject.isDb && dbGallery && dbGallery.length > 0
                   ? dbGallery.map((item) => (
-                      <div key={item.id} className="rounded-xl w-full aspect-video overflow-hidden relative bg-muted">
+                      <div key={item.id} className="rounded-xl w-full overflow-hidden relative bg-muted">
                         {item.type === "video" && item.file_url ? (
                           <video src={item.file_url} controls className="w-full h-full object-cover" />
                         ) : item.file_url ? (
