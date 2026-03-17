@@ -4,7 +4,7 @@ const metrics = [
   { value: "3x", label: "Avg. Engagement Growth" },
   { value: "10+", label: "Websites Launched" },
   { value: "98%", label: "Client Retention" },
-  { value: "5K+", label: "Designs Delivered" },
+  { value: "1000+", label: "Designs Delivered" },
 ];
 
 const MetricMarquee = () => {
