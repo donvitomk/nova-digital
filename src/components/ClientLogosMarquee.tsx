@@ -32,7 +32,7 @@ const ClientLogosMarquee = () => {
         {doubled.map((logo, i) => (
           <div key={i} className="flex items-center justify-center px-10 shrink-0">
             {logo.logo_url ? (
-              <img src={logo.logo_url} alt={logo.name} className="h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
+              <img src={logo.logo_url} alt={logo.name} className="h-10 w-auto max-w-[160px] object-contain opacity-70 hover:opacity-100 transition-opacity" />
             ) : (
               <span className="text-xl font-bold text-muted-foreground/40 whitespace-nowrap tracking-tight select-none">
                 {logo.name}
