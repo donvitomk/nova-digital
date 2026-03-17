@@ -92,6 +92,7 @@ type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean; thumbnail
 const OurWorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const { t } = useLanguage();
 
   const { data: dbProjects } = useQuery({
     queryKey: ["projects"],
