@@ -16,21 +16,21 @@ const HeroSection = () => {
       {/* Logo pattern background */}
       <div className="absolute top-0 left-0 right-0 h-[420px] overflow-hidden">
         <div className="absolute -inset-16">
-          {[...Array(6)].map((_, row) => (
+          {[...Array(5)].map((_, row) => (
             <div
               key={row}
               className="flex"
               style={{
-                marginTop: row === 0 ? 0 : '-28px',
-                marginLeft: row % 2 === 1 ? '8%' : 0,
+                marginTop: row === 0 ? 0 : '12px',
+                marginLeft: row % 2 === 1 ? '9%' : 0,
               }}
             >
               {[...Array(8)].map((_, col) => {
                 const distFromCenter = Math.sqrt(Math.pow(col - 3.5, 2) + Math.pow(row - 1.5, 2));
                 const opacity = Math.max(0.06, 0.32 - distFromCenter * 0.04);
                 return (
-                  <div key={col} className="shrink-0 flex items-center justify-center" style={{ width: '14.28%', height: '100px', opacity }}>
-                    <img src={logoSvg} alt="" className="w-56 h-56 lg:w-64 lg:h-64" style={{ filter: 'brightness(0) invert(1)' }} />
+                  <div key={col} className="shrink-0 flex items-center justify-center" style={{ width: '18%', height: '90px', opacity }}>
+                    <img src={logoSvg} alt="" className="w-40 h-40 lg:w-44 lg:h-44" style={{ filter: 'brightness(0) invert(1)' }} />
                   </div>
                 );
               })}
