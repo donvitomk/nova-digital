@@ -31,8 +31,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Center white radial to create the "opening" */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_40%,white_0%,transparent_70%)]" />
+      {/* Center white radial behind text */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,white_0%,transparent_70%)]" />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
