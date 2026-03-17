@@ -163,11 +163,6 @@ const OurWorkSection = () => {
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-2xl bg-background rounded-2xl shadow-2xl overflow-hidden border border-border"
           >
-            <div className={`h-56 bg-gradient-to-br ${selectedProject.color} flex items-center justify-center`}>
-              <span className="text-7xl font-bold text-foreground/10">
-                {selectedProject.title.charAt(0)}
-              </span>
-            </div>
 
             <button
               onClick={() => setSelectedProject(null)}
