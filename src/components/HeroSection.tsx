@@ -4,27 +4,35 @@ import { ArrowRight } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Blue-to-white gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.45] via-primary/[0.15] to-transparent" />
+      {/* Full blue at edges, white in center — fading down to white */}
+      <div className="absolute inset-0" style={{
+        background: `
+          linear-gradient(to bottom, hsl(241 99% 56%) 0%, hsl(241 99% 56% / 0.6) 30%, transparent 65%),
+          radial-gradient(ellipse 50% 70% at 50% 20%, white 0%, transparent 60%)
+        `,
+      }} />
       
       {/* Geometric column shapes at top */}
-      <div className="absolute top-0 left-0 right-0 h-[340px] overflow-hidden opacity-[0.7]">
+      <div className="absolute top-0 left-0 right-0 h-[300px] overflow-hidden">
         <div className="absolute inset-0 flex justify-center gap-3 px-4">
-          {[...Array(9)].map((_, i) => (
-            <div
-              key={i}
-              className="shrink-0 w-[140px] lg:w-[160px] rounded-b-3xl"
-              style={{
-                height: `${180 + Math.sin(i * 0.8) * 60}px`,
-                background: `linear-gradient(180deg, hsl(241 99% 56% / ${0.6 - i * 0.03}) 0%, hsl(241 99% 56% / 0.1) 100%)`,
-              }}
-            />
-          ))}
+          {[...Array(11)].map((_, i) => {
+            const distFromCenter = Math.abs(i - 5);
+            return (
+              <div
+                key={i}
+                className="shrink-0 w-[130px] lg:w-[150px] rounded-b-3xl"
+                style={{
+                  height: `${200 + Math.sin(i * 0.7) * 50}px`,
+                  background: `linear-gradient(180deg, hsl(241 99% 56% / ${0.9 - distFromCenter * 0.08}) 0%, hsl(241 99% 56% / ${0.3 - distFromCenter * 0.03}) 100%)`,
+                }}
+              />
+            );
+          })}
         </div>
       </div>
 
-      {/* Radial glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,hsl(241_99%_56%/0.3)_0%,transparent_70%)]" />
+      {/* Center white radial to create the "opening" */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_40%,white_0%,transparent_70%)]" />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
