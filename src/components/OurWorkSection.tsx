@@ -137,16 +137,14 @@ const OurWorkSection = () => {
             ))}
           </div>
 
-          {!showAll && (
-            <div className="mt-12 text-center">
-              <button
-                onClick={() => setShowAll(true)}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium transition-all hover:bg-secondary"
-              >
-                View More Projects <ArrowRight size={16} />
-              </button>
-            </div>
-          )}
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium transition-all hover:bg-secondary"
+            >
+              {showAll ? "Show Less" : "View More Projects"} <ArrowRight size={16} className={showAll ? "rotate-[-90deg] transition-transform" : "transition-transform"} />
+            </button>
+          </div>
         </div>
       </section>
 
