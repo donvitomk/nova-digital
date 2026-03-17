@@ -51,7 +51,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
           className="text-5xl sm:text-6xl lg:text-[5rem] font-bold tracking-[-0.04em] leading-[0.95] text-foreground text-balance max-w-4xl mx-auto"
         >
-          Your brand needs<br />better <span className="inline-block px-6 py-1 rounded-2xl text-primary-foreground relative overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(241 99% 56%) 0%, hsl(241 99% 66%) 50%, hsl(260 100% 75%) 100%)' }}><span className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_30%,rgba(255,255,255,0.3)_0%,transparent_70%)]" />content</span>
+          Your brand needs<br />better <span className="inline-flex items-center px-6 py-1 rounded-2xl text-primary-foreground relative overflow-hidden align-baseline" style={{ background: 'linear-gradient(135deg, hsl(241 99% 56%) 0%, hsl(241 99% 66%) 50%, hsl(260 100% 75%) 100%)' }}><span className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_30%,rgba(255,255,255,0.3)_0%,transparent_70%)]" />content</span>
         </motion.h1>
 
         <motion.p
