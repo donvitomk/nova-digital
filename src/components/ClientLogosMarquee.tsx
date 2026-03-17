@@ -1,18 +1,23 @@
-const clients = [
-  "Bloom Beauty",
-  "Altitude Fitness",
-  "Vibe Co.",
-  "Luxe Interiors",
-  "CloudStack",
-  "FreshBite",
-  "NovaTech",
-  "Solaris",
-  "PeakMedia",
-  "UrbanEdge",
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+
+const staticClients = [
+  "Bloom Beauty", "Altitude Fitness", "Vibe Co.", "Luxe Interiors",
+  "CloudStack", "FreshBite", "NovaTech", "Solaris", "PeakMedia", "UrbanEdge",
 ];
 
 const ClientLogosMarquee = () => {
-  const doubled = [...clients, ...clients];
+  const { data: dbLogos } = useQuery({
+    queryKey: ["client-logos"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("client_logos").select("*").order("display_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const logos = dbLogos && dbLogos.length > 0 ? dbLogos : staticClients.map((name) => ({ name, logo_url: null }));
+  const doubled = [...logos, ...logos];
 
   return (
     <section className="py-16 overflow-hidden">
@@ -21,14 +26,15 @@ const ClientLogosMarquee = () => {
         <h3 className="mt-2 text-xl font-semibold text-foreground">Brands we've worked with</h3>
       </div>
       <div className="flex marquee-logos">
-        {doubled.map((name, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-center px-10 shrink-0"
-          >
-            <span className="text-xl font-bold text-muted-foreground/40 whitespace-nowrap tracking-tight select-none">
-              {name}
-            </span>
+        {doubled.map((logo, i) => (
+          <div key={i} className="flex items-center justify-center px-10 shrink-0">
+            {logo.logo_url ? (
+              <img src={logo.logo_url} alt={logo.name} className="h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
+            ) : (
+              <span className="text-xl font-bold text-muted-foreground/40 whitespace-nowrap tracking-tight select-none">
+                {logo.name}
+              </span>
+            )}
           </div>
         ))}
       </div>

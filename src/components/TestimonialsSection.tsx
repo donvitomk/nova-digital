@@ -1,25 +1,28 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
-const testimonials = [
-  {
-    quote: "NOVA completely transformed our social media presence. Our engagement tripled in just two months.",
-    author: "Sarah Chen",
-    role: "Founder, Bloom Beauty",
-  },
-  {
-    quote: "The branding and website they created for us is stunning. We get compliments from clients every single day.",
-    author: "Marcus Rodriguez",
-    role: "CEO, Altitude Fitness",
-  },
-  {
-    quote: "Their motion graphics took our content to the next level. Our reels consistently hit 100K+ views now.",
-    author: "Emily Park",
-    role: "Marketing Director, Vibe Co.",
-  },
+const staticTestimonials = [
+  { quote: "NOVA completely transformed our social media presence. Our engagement tripled in just two months.", author: "Sarah Chen", role: "Founder", company: "Bloom Beauty" },
+  { quote: "The branding and website they created for us is stunning. We get compliments from clients every single day.", author: "Marcus Rodriguez", role: "CEO", company: "Altitude Fitness" },
+  { quote: "Their motion graphics took our content to the next level. Our reels consistently hit 100K+ views now.", author: "Emily Park", role: "Marketing Director", company: "Vibe Co." },
 ];
 
 const TestimonialsSection = () => {
+  const { data: dbTestimonials } = useQuery({
+    queryKey: ["testimonials"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("testimonials").select("*").order("display_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const testimonials = dbTestimonials && dbTestimonials.length > 0
+    ? dbTestimonials.map((t) => ({ quote: t.quote, author: t.author, role: t.role, company: t.company }))
+    : staticTestimonials;
+
   return (
     <section id="testimonials" className="py-24">
       <div className="container mx-auto px-6">
@@ -39,7 +42,7 @@ const TestimonialsSection = () => {
         <div className="grid md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <motion.div
-              key={t.author}
+              key={t.author + i}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -54,7 +57,7 @@ const TestimonialsSection = () => {
               <p className="text-foreground/90 leading-relaxed mb-6">"{t.quote}"</p>
               <div>
                 <p className="text-sm font-semibold text-foreground">{t.author}</p>
-                <p className="text-xs text-muted-foreground">{t.role}</p>
+                <p className="text-xs text-muted-foreground">{t.role}, {t.company}</p>
               </div>
             </motion.div>
           ))}
