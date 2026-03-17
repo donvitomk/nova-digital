@@ -2,11 +2,11 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-foreground/[0.06] py-12">
+    <footer className="border-t border-border py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="NOVA" className="h-6 w-auto" />
+            <img src={logo} alt="NOVA" className="h-7 w-auto invert" />
             <span className="text-sm font-bold tracking-tight text-foreground">NOVA</span>
           </div>
 

@@ -11,7 +11,7 @@ const MetricMarquee = () => {
   const doubled = [...metrics, ...metrics];
 
   return (
-    <section className="py-12 border-y border-foreground/[0.06] overflow-hidden">
+    <section className="py-12 border-y border-border overflow-hidden">
       <div className="flex marquee">
         {doubled.map((m, i) => (
           <div key={i} className="flex items-center gap-3 px-10 shrink-0">

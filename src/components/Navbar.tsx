@@ -13,14 +13,14 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-foreground/[0.06] bg-background/80 backdrop-blur-xl">
-      <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <a href="#" className="flex items-center gap-2.5">
-          <img src={logo} alt="NOVA" className="h-7 w-auto" />
-          <span className="text-lg font-bold tracking-tight text-foreground">NOVA</span>
+    <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+      <div className="w-full max-w-4xl bg-background/80 backdrop-blur-xl rounded-full border border-border shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex items-center justify-between h-14 px-3 pl-5">
+        <a href="#" className="flex items-center gap-2.5 shrink-0">
+          <img src={logo} alt="NOVA" className="h-9 w-auto invert" />
+          <span className="text-xl font-bold tracking-tight text-foreground">NOVA</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -32,12 +32,12 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:block shrink-0">
           <a
             href="#contact"
-            className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-lg bg-primary text-primary-foreground transition-all hover:glow-primary hover:scale-[1.02]"
+            className="inline-flex items-center px-5 py-2 text-sm font-medium rounded-full bg-primary text-primary-foreground transition-all hover:glow-primary hover:scale-[1.02]"
           >
-            Get Started
+            Contact Us
           </a>
         </div>
 
@@ -50,7 +50,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-foreground/[0.06] bg-background/95 backdrop-blur-xl px-6 py-4 space-y-3">
+        <div className="absolute top-16 left-4 right-4 bg-background/95 backdrop-blur-xl rounded-2xl border border-border shadow-lg px-6 py-4 space-y-3 md:hidden">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -63,10 +63,10 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="block text-center px-5 py-2.5 text-sm font-medium rounded-lg bg-primary text-primary-foreground"
+            className="block text-center px-5 py-2.5 text-sm font-medium rounded-full bg-primary text-primary-foreground"
             onClick={() => setMobileOpen(false)}
           >
-            Get Started
+            Contact Us
           </a>
         </div>
       )}
