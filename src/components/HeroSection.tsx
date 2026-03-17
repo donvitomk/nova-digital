@@ -14,16 +14,16 @@ const HeroSection = () => {
       }} />
       
       {/* Logo pattern background */}
-      <div className="absolute top-0 left-0 right-0 h-[350px] overflow-hidden">
-        <div className="absolute inset-0 grid grid-cols-6 lg:grid-cols-8 gap-6 p-8 pt-4">
-          {[...Array(24)].map((_, i) => {
-            const row = Math.floor(i / 8);
-            const col = i % 8;
-            const distFromCenter = Math.sqrt(Math.pow(col - 3.5, 2) + Math.pow(row - 0.5, 2));
-            const opacity = Math.max(0.08, 0.35 - distFromCenter * 0.06);
+      <div className="absolute top-0 left-0 right-0 h-[400px] overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-5 lg:grid-cols-7 gap-1 p-2">
+          {[...Array(28)].map((_, i) => {
+            const row = Math.floor(i / 7);
+            const col = i % 7;
+            const distFromCenter = Math.sqrt(Math.pow(col - 3, 2) + Math.pow(row - 0.5, 2));
+            const opacity = Math.max(0.08, 0.35 - distFromCenter * 0.05);
             return (
               <div key={i} className="flex items-center justify-center" style={{ opacity }}>
-                <img src={logoSvg} alt="" className="w-20 h-20 lg:w-24 lg:h-24" style={{ filter: 'brightness(0) invert(1)' }} />
+                <img src={logoSvg} alt="" className="w-44 h-44 lg:w-52 lg:h-52" style={{ filter: 'brightness(0) invert(1)' }} />
               </div>
             );
           })}
