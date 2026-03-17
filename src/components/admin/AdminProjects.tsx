@@ -120,16 +120,31 @@ const AdminProjects = () => {
     toast.success("Gallery item removed");
   };
 
+  const uploadThumbnail = async (file: File) => {
+    setThumbnailUploading(true);
+    try {
+      const ext = file.name.split(".").pop();
+      const path = `thumbnails/${Date.now()}.${ext}`;
+      const { error: uploadError } = await supabase.storage.from("media").upload(path, file);
+      if (uploadError) { toast.error("Thumbnail upload failed"); return; }
+      const { data: urlData } = supabase.storage.from("media").getPublicUrl(path);
+      setForm((prev) => ({ ...prev, thumbnail_url: urlData.publicUrl }));
+      toast.success("Thumbnail uploaded");
+    } finally {
+      setThumbnailUploading(false);
+    }
+  };
+
   const startEdit = (p: Project) => {
     setEditing(p);
     setIsNew(false);
-    setForm({ title: p.title, category: p.category, description: p.description, services: p.services.join(", "), color: p.color });
+    setForm({ title: p.title, category: p.category, description: p.description, services: p.services.join(", "), color: p.color, thumbnail_url: p.thumbnail_url || "" });
   };
 
   const startNew = () => {
     setEditing(null);
     setIsNew(true);
-    setForm({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20" });
+    setForm({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20", thumbnail_url: "" });
   };
 
   if (isLoading) return <p className="text-muted-foreground">Loading...</p>;
