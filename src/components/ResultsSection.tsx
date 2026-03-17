@@ -10,7 +10,7 @@ const stats = [
 const ResultsSection = () => {
   return (
     <section id="results" className="py-24 relative">
-      <div className="absolute inset-0 gradient-radial-hero opacity-50" />
+      <div className="absolute inset-0 gradient-radial-hero opacity-40" />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
