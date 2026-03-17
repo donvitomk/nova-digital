@@ -144,12 +144,12 @@ const OurWorkSection = () => {
             transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
             className="text-center mb-16"
           >
-            <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Our Work</p>
+            <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">{t(translations.ourWork.label)}</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
-              Projects we're proud of
+              {t(translations.ourWork.heading)}
             </h2>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-              A selection of brands we've helped grow, design, and transform.
+              {t(translations.ourWork.subheading)}
             </p>
           </motion.div>
 
