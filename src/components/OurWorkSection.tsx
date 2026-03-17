@@ -238,9 +238,9 @@ const OurWorkSection = () => {
                   ? dbGallery.map((item) => (
                       <div key={item.id} className="rounded-xl w-full overflow-hidden relative bg-muted">
                         {item.type === "video" && item.file_url ? (
-                          <video src={item.file_url} controls className="w-full h-full object-cover" />
+                          <video src={item.file_url} controls className="w-full h-auto" />
                         ) : item.file_url ? (
-                          <img src={item.file_url} alt={item.label} className="w-full h-full object-cover" />
+                          <img src={item.file_url} alt={item.label} className="w-full h-auto" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
                             <span className="text-sm font-medium text-foreground/50">{item.label}</span>
