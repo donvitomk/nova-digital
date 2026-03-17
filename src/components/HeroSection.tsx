@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import logoSvg from "@/assets/logo.svg";
 
 const HeroSection = () => {
   return (
