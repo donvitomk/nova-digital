@@ -48,9 +48,9 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        {activeTab === "projects" && <AdminProjects />}
-        {activeTab === "logos" && <AdminLogos />}
-        {activeTab === "testimonials" && <AdminTestimonials />}
+        <div className={activeTab === "projects" ? "" : "hidden"}><AdminProjects /></div>
+        <div className={activeTab === "logos" ? "" : "hidden"}><AdminLogos /></div>
+        <div className={activeTab === "testimonials" ? "" : "hidden"}><AdminTestimonials /></div>
       </div>
     </div>
   );
