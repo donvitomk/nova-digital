@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const projects = [
   {
@@ -90,6 +92,7 @@ type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean; thumbnail
 const OurWorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const { t } = useLanguage();
 
   const { data: dbProjects } = useQuery({
     queryKey: ["projects"],
@@ -141,12 +144,12 @@ const OurWorkSection = () => {
             transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
             className="text-center mb-16"
           >
-            <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Our Work</p>
+            <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">{t(translations.ourWork.label)}</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
-              Projects we're proud of
+              {t(translations.ourWork.heading)}
             </h2>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-              A selection of brands we've helped grow, design, and transform.
+              {t(translations.ourWork.subheading)}
             </p>
           </motion.div>
 
@@ -175,7 +178,7 @@ const OurWorkSection = () => {
                   <p className="text-xs text-primary font-medium uppercase tracking-wide mb-1">{project.category}</p>
                   <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
                   <div className="mt-3 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                    View Project <ArrowRight size={14} />
+                    {t(translations.ourWork.viewProject)} <ArrowRight size={14} />
                   </div>
                 </div>
               </motion.div>
@@ -187,7 +190,7 @@ const OurWorkSection = () => {
               onClick={() => setShowAll(!showAll)}
               className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium transition-all hover:bg-secondary"
             >
-              {showAll ? "Show Less" : "View More Projects"} <ArrowRight size={16} className={showAll ? "rotate-[-90deg] transition-transform" : "transition-transform"} />
+              {showAll ? t(translations.ourWork.showLess) : t(translations.ourWork.viewMore)} <ArrowRight size={16} className={showAll ? "rotate-[-90deg] transition-transform" : "transition-transform"} />
             </button>
           </div>
         </div>
@@ -232,7 +235,7 @@ const OurWorkSection = () => {
                 ))}
               </div>
 
-              <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">Project Gallery</h4>
+              <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">{t(translations.ourWork.projectGallery)}</h4>
               <div className="flex flex-col gap-4">
                 {selectedProject.isDb && dbGallery && dbGallery.length > 0
                   ? dbGallery.map((item) => (

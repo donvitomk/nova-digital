@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const staticTestimonials = [
   { quote: "NOVA completely transformed our social media presence. Our engagement tripled in just two months.", author: "Sarah Chen", role: "Founder", company: "Bloom Beauty" },
@@ -10,6 +12,7 @@ const staticTestimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const { t } = useLanguage();
   const { data: dbTestimonials } = useQuery({
     queryKey: ["testimonials"],
     queryFn: async () => {
@@ -20,7 +23,7 @@ const TestimonialsSection = () => {
   });
 
   const testimonials = dbTestimonials && dbTestimonials.length > 0
-    ? dbTestimonials.map((t) => ({ quote: t.quote, author: t.author, role: t.role, company: t.company }))
+    ? dbTestimonials.map((tt) => ({ quote: tt.quote, author: tt.author, role: tt.role, company: tt.company }))
     : staticTestimonials;
 
   return (
@@ -33,16 +36,16 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Testimonials</p>
+          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">{t(translations.testimonials.label)}</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
-            What our clients say
+            {t(translations.testimonials.heading)}
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-5">
-          {testimonials.map((t, i) => (
+          {testimonials.map((item, i) => (
             <motion.div
-              key={t.author + i}
+              key={item.author + i}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -54,10 +57,10 @@ const TestimonialsSection = () => {
                   <Star key={j} size={14} className="fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-foreground/90 leading-relaxed mb-6">"{t.quote}"</p>
+              <p className="text-foreground/90 leading-relaxed mb-6">"{item.quote}"</p>
               <div>
-                <p className="text-sm font-semibold text-foreground">{t.author}</p>
-                <p className="text-xs text-muted-foreground">{t.role}, {t.company}</p>
+                <p className="text-sm font-semibold text-foreground">{item.author}</p>
+                <p className="text-xs text-muted-foreground">{item.role}, {item.company}</p>
               </div>
             </motion.div>
           ))}

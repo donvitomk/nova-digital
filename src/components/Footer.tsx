@@ -1,6 +1,18 @@
 import logo from "@/assets/logo.png";
+import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
+  const links = [
+    { label: t(translations.nav.services), href: "#services" },
+    { label: t(translations.nav.ourWork), href: "#work" },
+    { label: t(translations.nav.results), href: "#results" },
+    { label: t(translations.nav.testimonials), href: "#testimonials" },
+    { label: t(translations.nav.faq), href: "#faq" },
+  ];
+
   return (
     <footer className="bg-foreground py-12">
       <div className="container mx-auto px-6">
@@ -11,15 +23,9 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-8">
-            {[
-              { label: "Services", href: "#services" },
-              { label: "Our Work", href: "#work" },
-              { label: "Results", href: "#results" },
-              { label: "Testimonials", href: "#testimonials" },
-              { label: "FAQ", href: "#faq" },
-            ].map((link) => (
+            {links.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 className="text-xs text-background/70 hover:text-background transition-colors"
               >
@@ -29,7 +35,7 @@ const Footer = () => {
           </div>
 
           <p className="text-xs text-background/50">
-            © {new Date().getFullYear()} NOVA. All rights reserved.
+            © {new Date().getFullYear()} NOVA. {t(translations.footer.rights)}
           </p>
         </div>
       </div>
