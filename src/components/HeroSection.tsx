@@ -15,7 +15,7 @@ const HeroSection = () => {
       
       {/* Logo pattern background */}
       <div className="absolute top-0 left-0 right-0 h-[400px] overflow-hidden">
-        <div className="absolute inset-0 grid grid-cols-5 lg:grid-cols-7 gap-1 p-2">
+        <div className="absolute inset-0 grid grid-cols-5 lg:grid-cols-7 gap-0 p-0 -m-4">
           {[...Array(28)].map((_, i) => {
             const row = Math.floor(i / 7);
             const col = i % 7;
