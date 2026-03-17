@@ -85,7 +85,7 @@ const projects = [
   },
 ];
 
-type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean };
+type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean; thumbnail_url?: string | null };
 
 const OurWorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
