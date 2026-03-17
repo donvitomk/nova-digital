@@ -32,7 +32,8 @@ const AdminProjects = () => {
   const qc = useQueryClient();
   const [editing, setEditing] = useState<Project | null>(null);
   const [isNew, setIsNew] = useState(false);
-  const [form, setForm] = useState({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20" });
+  const [form, setForm] = useState({ title: "", category: "", description: "", services: "", color: "from-primary/20 to-blue-400/20", thumbnail_url: "" });
+  const [thumbnailUploading, setThumbnailUploading] = useState(false);
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
