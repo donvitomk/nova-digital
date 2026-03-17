@@ -199,9 +199,9 @@ const OurWorkSection = () => {
                     key={i}
                     className={`bg-gradient-to-br ${item.color} rounded-xl w-full aspect-video flex items-center justify-center relative overflow-hidden`}
                   >
-                    {item.type === "video" && item.src ? (
+                    {item.type === "video" && "src" in item && item.src ? (
                       <video
-                        src={item.src}
+                        src={item.src as string}
                         controls
                         className="w-full h-full object-cover rounded-xl"
                       />
