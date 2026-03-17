@@ -13,20 +13,18 @@ const HeroSection = () => {
         `,
       }} />
       
-      {/* Geometric column shapes at top */}
-      <div className="absolute top-0 left-0 right-0 h-[300px] overflow-hidden">
-        <div className="absolute inset-0 flex justify-center gap-3 px-4">
-          {[...Array(11)].map((_, i) => {
-            const distFromCenter = Math.abs(i - 5);
+      {/* Logo pattern background */}
+      <div className="absolute top-0 left-0 right-0 h-[350px] overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-6 lg:grid-cols-8 gap-6 p-8 pt-4">
+          {[...Array(24)].map((_, i) => {
+            const row = Math.floor(i / 8);
+            const col = i % 8;
+            const distFromCenter = Math.sqrt(Math.pow(col - 3.5, 2) + Math.pow(row - 0.5, 2));
+            const opacity = Math.max(0.08, 0.35 - distFromCenter * 0.06);
             return (
-              <div
-                key={i}
-                className="shrink-0 w-[130px] lg:w-[150px] rounded-b-3xl"
-                style={{
-                  height: `${200 + Math.sin(i * 0.7) * 50}px`,
-                  background: `linear-gradient(180deg, hsl(241 99% 56% / ${0.9 - distFromCenter * 0.08}) 0%, hsl(241 99% 56% / ${0.3 - distFromCenter * 0.03}) 100%)`,
-                }}
-              />
+              <div key={i} className="flex items-center justify-center" style={{ opacity }}>
+                <img src={logoSvg} alt="" className="w-20 h-20 lg:w-24 lg:h-24" style={{ filter: 'brightness(0) invert(1)' }} />
+              </div>
             );
           })}
         </div>
