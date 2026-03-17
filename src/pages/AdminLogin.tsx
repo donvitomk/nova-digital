@@ -31,7 +31,7 @@ const AdminLogin = () => {
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <img src={logo} alt="NOVA" className="h-16 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5713%) hue-rotate(243deg) brightness(96%) contrast(107%)' }} />
+          <img src={logo} alt="NOVA" className="h-16 w-auto mx-auto mb-3" style={{ filter: 'brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5713%) hue-rotate(243deg) brightness(96%) contrast(107%)' }} />
           <h1 className="text-2xl font-bold text-foreground">Admin Login</h1>
           <p className="text-sm text-muted-foreground mt-1">Sign in to manage your site</p>
         </div>
