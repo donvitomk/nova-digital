@@ -85,11 +85,49 @@ const projects = [
   },
 ];
 
+type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean };
+
 const OurWorkSection = () => {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const { data: dbProjects } = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("projects").select("*").order("display_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const { data: dbGallery } = useQuery({
+    queryKey: ["project-gallery", selectedProject?.id],
+    queryFn: async () => {
+      if (!selectedProject?.id) return [];
+      const { data, error } = await supabase.from("project_gallery").select("*").eq("project_id", selectedProject.id).order("display_order");
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!selectedProject?.id && !!selectedProject?.isDb,
+  });
+
+  const allProjects: ProjectType[] = [
+    ...(dbProjects && dbProjects.length > 0
+      ? dbProjects.map((p) => ({
+          id: p.id,
+          isDb: true as const,
+          title: p.title,
+          category: p.category,
+          color: p.color,
+          description: p.description,
+          services: p.services || [],
+          gallery: [],
+        }))
+      : []),
+    ...projects,
+  ];
+
+  const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
 
   return (
     <>
