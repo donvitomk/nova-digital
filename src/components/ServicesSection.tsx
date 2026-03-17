@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Globe, Palette, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Share2, Globe, Palette, Play, Sparkles, Code } from "lucide-react";
 
 const services = [
   {
@@ -11,6 +11,11 @@ const services = [
     icon: Globe,
     title: "Website Design",
     description: "Custom websites built for conversion — fast, responsive, and designed to make your brand unforgettable.",
+  },
+  {
+    icon: Code,
+    title: "Website Development",
+    description: "Clean, performant code that brings designs to life — from landing pages to full-scale web applications.",
   },
   {
     icon: Palette,
