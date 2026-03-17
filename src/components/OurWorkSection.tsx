@@ -2,6 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 
+type GalleryItem = {
+  label: string;
+  color: string;
+  type: "image" | "video";
+  src?: string;
+};
+
 const projects = [
   {
     title: "Bloom Beauty",
@@ -10,10 +17,10 @@ const projects = [
     description: "We built Bloom Beauty's entire social identity from the ground up — a cohesive brand system, monthly content calendars, and a visual language that resonated with their Gen-Z audience. Engagement grew 4x in 3 months.",
     services: ["Social Media Marketing", "Branding", "Graphic Design"],
     gallery: [
-      { label: "Brand Identity", color: "from-pink-400/30 to-rose-300/30" },
-      { label: "Social Feed", color: "from-purple-400/30 to-pink-300/30" },
-      { label: "Story Templates", color: "from-fuchsia-400/30 to-purple-300/30" },
-      { label: "Campaign Launch", color: "from-rose-400/30 to-pink-400/30" },
+      { label: "Brand Identity", color: "from-pink-400/30 to-rose-300/30", type: "image" as const },
+      { label: "Social Feed", color: "from-purple-400/30 to-pink-300/30", type: "image" as const },
+      { label: "Story Templates", color: "from-fuchsia-400/30 to-purple-300/30", type: "image" as const },
+      { label: "Campaign Launch", color: "from-rose-400/30 to-pink-400/30", type: "video" as const },
     ],
   },
   {
@@ -23,10 +30,10 @@ const projects = [
     description: "A high-performance website designed to convert visitors into members. We crafted a bold, energetic design language with seamless booking integration and mobile-first responsiveness.",
     services: ["Website Design", "Website Development", "Branding"],
     gallery: [
-      { label: "Homepage", color: "from-blue-400/30 to-cyan-300/30" },
-      { label: "Mobile View", color: "from-primary/30 to-blue-300/30" },
-      { label: "Booking Flow", color: "from-sky-400/30 to-blue-300/30" },
-      { label: "Brand System", color: "from-indigo-400/30 to-primary/30" },
+      { label: "Homepage", color: "from-blue-400/30 to-cyan-300/30", type: "image" as const },
+      { label: "Mobile View", color: "from-primary/30 to-blue-300/30", type: "image" as const },
+      { label: "Booking Flow", color: "from-sky-400/30 to-blue-300/30", type: "image" as const },
+      { label: "Brand System", color: "from-indigo-400/30 to-primary/30", type: "image" as const },
     ],
   },
   {
@@ -36,10 +43,10 @@ const projects = [
     description: "Vibe Co. needed scroll-stopping content for their product launches. We produced a series of animated reels and stories that consistently hit 100K+ views and drove a 60% increase in website traffic.",
     services: ["Motion Graphic Design", "Social Media Marketing"],
     gallery: [
-      { label: "Product Reel", color: "from-orange-400/30 to-amber-300/30" },
-      { label: "Launch Video", color: "from-red-400/30 to-orange-300/30" },
-      { label: "Story Sequence", color: "from-amber-400/30 to-yellow-300/30" },
-      { label: "Ad Creative", color: "from-orange-500/30 to-red-300/30" },
+      { label: "Product Reel", color: "from-orange-400/30 to-amber-300/30", type: "video" as const },
+      { label: "Launch Video", color: "from-red-400/30 to-orange-300/30", type: "video" as const },
+      { label: "Story Sequence", color: "from-amber-400/30 to-yellow-300/30", type: "image" as const },
+      { label: "Ad Creative", color: "from-orange-500/30 to-red-300/30", type: "image" as const },
     ],
   },
   {
@@ -49,10 +56,10 @@ const projects = [
     description: "A complete rebrand for a luxury interior design studio. From a refined logo to print collateral and a premium social media aesthetic, we positioned Luxe as the go-to for high-end residential projects.",
     services: ["Branding", "Graphic Design", "Social Media Marketing"],
     gallery: [
-      { label: "Logo Design", color: "from-emerald-400/30 to-green-300/30" },
-      { label: "Print Collateral", color: "from-teal-400/30 to-emerald-300/30" },
-      { label: "Social Aesthetic", color: "from-green-400/30 to-teal-300/30" },
-      { label: "Brand Book", color: "from-emerald-500/30 to-cyan-300/30" },
+      { label: "Logo Design", color: "from-emerald-400/30 to-green-300/30", type: "image" as const },
+      { label: "Print Collateral", color: "from-teal-400/30 to-emerald-300/30", type: "image" as const },
+      { label: "Social Aesthetic", color: "from-green-400/30 to-teal-300/30", type: "image" as const },
+      { label: "Brand Book", color: "from-emerald-500/30 to-cyan-300/30", type: "image" as const },
     ],
   },
   {
@@ -62,10 +69,10 @@ const projects = [
     description: "We designed and developed a sleek SaaS landing page and managed CloudStack's LinkedIn and Twitter presence, helping them generate 2,000+ qualified leads in their first quarter.",
     services: ["Website Design", "Website Development", "Social Media Marketing"],
     gallery: [
-      { label: "Landing Page", color: "from-violet-400/30 to-purple-300/30" },
-      { label: "Dashboard UI", color: "from-primary/30 to-violet-300/30" },
-      { label: "Social Content", color: "from-purple-400/30 to-indigo-300/30" },
-      { label: "Ad Campaigns", color: "from-indigo-400/30 to-primary/30" },
+      { label: "Landing Page", color: "from-violet-400/30 to-purple-300/30", type: "image" as const },
+      { label: "Dashboard UI", color: "from-primary/30 to-violet-300/30", type: "image" as const },
+      { label: "Social Content", color: "from-purple-400/30 to-indigo-300/30", type: "image" as const },
+      { label: "Ad Campaigns", color: "from-indigo-400/30 to-primary/30", type: "video" as const },
     ],
   },
   {
@@ -75,10 +82,10 @@ const projects = [
     description: "A vibrant brand identity and animated content suite for a healthy food delivery startup. Our motion graphics and packaging design helped FreshBite stand out in a crowded market.",
     services: ["Branding", "Motion Graphic Design", "Graphic Design"],
     gallery: [
-      { label: "Packaging", color: "from-amber-400/30 to-yellow-300/30" },
-      { label: "Brand Identity", color: "from-orange-400/30 to-amber-300/30" },
-      { label: "App Promo Video", color: "from-yellow-400/30 to-orange-300/30" },
-      { label: "Social Templates", color: "from-amber-500/30 to-orange-400/30" },
+      { label: "Packaging", color: "from-amber-400/30 to-yellow-300/30", type: "image" as const },
+      { label: "Brand Identity", color: "from-orange-400/30 to-amber-300/30", type: "image" as const },
+      { label: "App Promo Video", color: "from-yellow-400/30 to-orange-300/30", type: "video" as const },
+      { label: "Social Templates", color: "from-amber-500/30 to-orange-400/30", type: "image" as const },
     ],
   },
 ];
