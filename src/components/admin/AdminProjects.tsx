@@ -169,6 +169,23 @@ const AdminProjects = () => {
           <div><Label>Description</Label><Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></div>
           <div><Label>Services (comma separated)</Label><Input value={form.services} onChange={(e) => setForm({ ...form, services: e.target.value })} /></div>
           <div><Label>Gradient Color</Label><Input value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} placeholder="from-pink-500/20 to-purple-500/20" /></div>
+          <div className="space-y-2">
+            <Label>Thumbnail (Recommended: 1200×630px, 16:9 ratio, JPG/PNG)</Label>
+            {form.thumbnail_url && (
+              <img src={form.thumbnail_url} alt="Thumbnail preview" className="w-48 rounded-lg border border-border object-cover" />
+            )}
+            <Input
+              type="file"
+              accept="image/*"
+              disabled={thumbnailUploading}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) uploadThumbnail(file);
+                e.target.value = "";
+              }}
+            />
+            {thumbnailUploading && <p className="text-xs text-muted-foreground">Uploading...</p>}
+          </div>
           <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending}>
             {saveMutation.isPending ? "Saving..." : "Save Project"}
           </Button>
