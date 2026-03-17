@@ -235,7 +235,7 @@ const OurWorkSection = () => {
                 ))}
               </div>
 
-              <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">Project Gallery</h4>
+              <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">{t(translations.ourWork.projectGallery)}</h4>
               <div className="flex flex-col gap-4">
                 {selectedProject.isDb && dbGallery && dbGallery.length > 0
                   ? dbGallery.map((item) => (
