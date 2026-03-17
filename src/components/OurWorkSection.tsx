@@ -178,7 +178,7 @@ const OurWorkSection = () => {
                   <p className="text-xs text-primary font-medium uppercase tracking-wide mb-1">{project.category}</p>
                   <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
                   <div className="mt-3 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                    View Project <ArrowRight size={14} />
+                    {t(translations.ourWork.viewProject)} <ArrowRight size={14} />
                   </div>
                 </div>
               </motion.div>
