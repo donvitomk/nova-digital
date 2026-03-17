@@ -178,12 +178,12 @@ const OurWorkSection = () => {
               <X size={18} />
             </button>
 
-            <div className="p-8">
+            <div className="p-8 max-h-[60vh] overflow-y-auto">
               <p className="text-xs text-primary font-medium uppercase tracking-wide mb-2">{selectedProject.category}</p>
               <h3 className="text-2xl font-bold text-foreground mb-4">{selectedProject.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">{selectedProject.description}</p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {selectedProject.services.map((service) => (
                   <span
                     key={service}
@@ -191,6 +191,18 @@ const OurWorkSection = () => {
                   >
                     {service}
                   </span>
+                ))}
+              </div>
+
+              <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">Project Gallery</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {selectedProject.gallery.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`bg-gradient-to-br ${item.color} rounded-xl h-36 flex items-center justify-center`}
+                  >
+                    <span className="text-sm font-medium text-foreground/50">{item.label}</span>
+                  </div>
                 ))}
               </div>
             </div>
