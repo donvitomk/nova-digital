@@ -15,8 +15,8 @@ const translations = {
     heading2: { en: "needs better", mk: "му треба подобра" },
     heading3: { en: "content", mk: "содржина" },
     description: {
-      en: "NOVA is a creative agency that builds bold brands through social media, stunning design, and scroll-stopping content.",
-      mk: "NOVA е креативна агенција која гради смели брендови преку социјални медиуми, неверојатен дизајн и содржина што го привлекува вниманието.",
+      en: "We help businesses grow with strategic digital marketing, eye-catching design, and content that converts.",
+      mk: "Им помагаме на бизнисите да растат со стратешки дигитален маркетинг, впечатлив дизајн и содржина која конвертира.",
     },
     learnMore: { en: "Learn More", mk: "Дознај Повеќе" },
     getStarted: { en: "Get Started", mk: "Започни" },
