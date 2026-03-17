@@ -10,7 +10,7 @@ const translations = {
     contact: { en: "Contact Us", mk: "Контакт" },
   },
   hero: {
-    badge: { en: "Social media & creative agency", mk: "Агенција за социјални медиуми и креатива" },
+    badge: { en: "Digital marketing agency", mk: "Агенција за дигитален маркетинг" },
     heading1: { en: "Your brand", mk: "На твојот бренд" },
     heading2: { en: "needs better", mk: "му треба подобра" },
     heading3: { en: "content", mk: "содржина" },
