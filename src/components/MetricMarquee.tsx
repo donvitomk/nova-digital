@@ -1,10 +1,10 @@
 const metrics = [
-  { value: "500+", label: "Brands Transformed" },
-  { value: "10M+", label: "Social Impressions" },
+  { value: "20+", label: "Brands Transformed" },
+  { value: "1M+", label: "Social Impressions" },
   { value: "3x", label: "Avg. Engagement Growth" },
-  { value: "200+", label: "Websites Launched" },
+  { value: "10+", label: "Websites Launched" },
   { value: "98%", label: "Client Retention" },
-  { value: "50K+", label: "Designs Delivered" },
+  { value: "5K+", label: "Designs Delivered" },
 ];
 
 const MetricMarquee = () => {
