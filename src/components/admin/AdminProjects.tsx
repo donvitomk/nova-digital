@@ -25,6 +25,7 @@ interface Project {
   services: string[];
   color: string;
   display_order: number;
+  thumbnail_url: string | null;
 }
 
 const AdminProjects = () => {
