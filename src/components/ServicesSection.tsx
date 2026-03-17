@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Globe, Palette, Play, Sparkles, Code } from "lucide-react";
+import { Share2, Globe, Palette, Play, Sparkles, Code } from "lucide-react";
 
 const services = [
   {
@@ -70,9 +70,6 @@ const ServicesSection = () => {
                 <service.icon className="text-primary mb-5" size={24} strokeWidth={1.5} />
                 <h3 className="text-lg font-semibold text-foreground mb-3">{service.title}</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
-                <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn More <ArrowRight size={14} />
-                </div>
               </div>
             </motion.div>
           ))}
