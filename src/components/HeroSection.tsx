@@ -14,19 +14,28 @@ const HeroSection = () => {
       }} />
       
       {/* Logo pattern background */}
-      <div className="absolute top-0 left-0 right-0 h-[400px] overflow-hidden">
-        <div className="absolute -inset-12 flex flex-wrap" style={{ gap: 0 }}>
-          {[...Array(42)].map((_, i) => {
-            const row = Math.floor(i / 7);
-            const col = i % 7;
-            const distFromCenter = Math.sqrt(Math.pow(col - 3, 2) + Math.pow(row - 1.5, 2));
-            const opacity = Math.max(0.08, 0.35 - distFromCenter * 0.05);
-            return (
-              <div key={i} className="flex items-center justify-center" style={{ opacity, width: '14.28%', height: '112px' }}>
-                <img src={logoSvg} alt="" className="w-52 h-52 lg:w-60 lg:h-60 -m-10" style={{ filter: 'brightness(0) invert(1)' }} />
-              </div>
-            );
-          })}
+      <div className="absolute top-0 left-0 right-0 h-[420px] overflow-hidden">
+        <div className="absolute -inset-16">
+          {[...Array(6)].map((_, row) => (
+            <div
+              key={row}
+              className="flex"
+              style={{
+                marginTop: row === 0 ? 0 : '-28px',
+                marginLeft: row % 2 === 1 ? '8%' : 0,
+              }}
+            >
+              {[...Array(8)].map((_, col) => {
+                const distFromCenter = Math.sqrt(Math.pow(col - 3.5, 2) + Math.pow(row - 1.5, 2));
+                const opacity = Math.max(0.06, 0.32 - distFromCenter * 0.04);
+                return (
+                  <div key={col} className="shrink-0 flex items-center justify-center" style={{ width: '14.28%', height: '100px', opacity }}>
+                    <img src={logoSvg} alt="" className="w-56 h-56 lg:w-64 lg:h-64" style={{ filter: 'brightness(0) invert(1)' }} />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
 
