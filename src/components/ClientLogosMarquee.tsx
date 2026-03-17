@@ -17,7 +17,10 @@ const ClientLogosMarquee = () => {
   });
 
   const logos = dbLogos && dbLogos.length > 0 ? dbLogos : staticClients.map((name) => ({ name, logo_url: null }));
-  const doubled = [...logos, ...logos];
+  // Ensure enough items for a smooth marquee by repeating
+  const minItems = Math.max(1, Math.ceil(10 / logos.length));
+  const filled = Array.from({ length: minItems }, () => logos).flat();
+  const doubled = [...filled, ...filled];
 
   return (
     <section className="py-16 overflow-hidden">
