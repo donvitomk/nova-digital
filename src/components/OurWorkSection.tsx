@@ -190,7 +190,7 @@ const OurWorkSection = () => {
               onClick={() => setShowAll(!showAll)}
               className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-medium transition-all hover:bg-secondary"
             >
-              {showAll ? "Show Less" : "View More Projects"} <ArrowRight size={16} className={showAll ? "rotate-[-90deg] transition-transform" : "transition-transform"} />
+              {showAll ? t(translations.ourWork.showLess) : t(translations.ourWork.viewMore)} <ArrowRight size={16} className={showAll ? "rotate-[-90deg] transition-transform" : "transition-transform"} />
             </button>
           </div>
         </div>
