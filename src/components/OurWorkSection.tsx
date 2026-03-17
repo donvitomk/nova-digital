@@ -122,6 +122,7 @@ const OurWorkSection = () => {
           description: p.description,
           services: p.services || [],
           gallery: [],
+          thumbnail_url: (p as any).thumbnail_url || null,
         }))
       : []),
     ...projects,
