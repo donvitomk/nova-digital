@@ -59,7 +59,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
           className="text-5xl sm:text-6xl lg:text-[5rem] font-bold tracking-[-0.04em] leading-[0.95] text-foreground text-balance max-w-4xl mx-auto"
         >
-          Your brand<br /><span className="whitespace-nowrap">needs better</span> <span className="inline-flex items-center px-6 pb-4 pt-2 rounded-[20px] text-primary-foreground relative overflow-hidden" style={{ background: 'linear-gradient(180deg, hsl(241 99% 66%) 0%, hsl(241 99% 56%) 100%)', verticalAlign: 'baseline' }}><span className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.35)_0%,transparent_60%)]" />content</span>
+          Your brand<br /><span className="whitespace-nowrap">needs better</span> <span className="inline-flex items-center px-5 sm:px-6 pb-2 sm:pb-4 pt-1 sm:pt-2 rounded-[14px] sm:rounded-[20px] text-primary-foreground relative overflow-hidden" style={{ background: 'linear-gradient(180deg, hsl(241 99% 66%) 0%, hsl(241 99% 56%) 100%)', verticalAlign: 'baseline' }}><span className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.35)_0%,transparent_60%)]" />content</span>
         </motion.h1>
 
         <motion.p
