@@ -15,17 +15,17 @@ const CTASection = () => {
           className="max-w-2xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground text-balance">
-            Ready to accelerate your growth?
+            Ready to level up your brand?
           </h2>
           <p className="mt-4 text-muted-foreground max-w-md mx-auto">
-            Book a free strategy session. We'll audit your current performance and show you exactly where the opportunity is.
+            Book a free creative consultation. We'll review your brand and show you exactly how to stand out.
           </p>
           <div className="mt-10">
             <a
               href="mailto:hello@nova.agency"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium transition-all hover:scale-[1.02] hover:shadow-[0_0_24px_hsl(241_99%_56%/0.35)]"
             >
-              Book Strategy Call <ArrowRight size={16} />
+              Book Free Consultation <ArrowRight size={16} />
             </a>
           </div>
         </motion.div>

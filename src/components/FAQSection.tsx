@@ -8,20 +8,24 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    q: "How does NOVA measure campaign success?",
-    a: "We track every metric that matters — ROAS, CPA, LTV, and custom KPIs aligned to your business goals. No vanity metrics, no fluff. You get a live dashboard with full attribution transparency.",
+    q: "What social media platforms do you manage?",
+    a: "We manage Instagram, TikTok, Facebook, LinkedIn, X (Twitter), and Pinterest. We'll recommend the right mix based on your audience and goals.",
   },
   {
-    q: "What industries do you specialize in?",
-    a: "We work with B2B SaaS, e-commerce, fintech, and high-growth startups. Our strategies are data-first and adapt to any vertical where measurable ROI is the priority.",
+    q: "How long does a website project take?",
+    a: "Most websites are designed, built, and launched within 3-5 weeks depending on complexity. We work in sprints and keep you involved at every milestone.",
   },
   {
-    q: "How quickly can we expect results?",
-    a: "Most clients see measurable improvements within 30-60 days. Paid channels deliver faster signal; SEO and content strategies compound over 3-6 months.",
+    q: "Do you offer branding packages for startups?",
+    a: "Absolutely. We have tailored branding packages that include logo design, brand guidelines, typography, color systems, and social media templates — perfect for new businesses.",
+  },
+  {
+    q: "Can you create content for our social media?",
+    a: "Yes — from graphic posts and carousel designs to reels, motion graphics, and stories. We handle the creative so you can focus on running your business.",
   },
   {
     q: "What makes NOVA different from other agencies?",
-    a: "We treat your marketing budget like an investment portfolio — every dollar is tracked, optimized, and accountable. No long-term contracts, no hidden fees. Just performance.",
+    a: "We combine creative excellence with strategic thinking. Every design, post, and pixel serves a purpose. No fluff, no cookie-cutter templates — just bold, original work tailored to your brand.",
   },
 ];
 

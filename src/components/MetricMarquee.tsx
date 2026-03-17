@@ -1,10 +1,10 @@
 const metrics = [
-  { value: "47.2%", label: "Avg. ROAS Increase" },
-  { value: "3.8x", label: "Revenue Growth" },
-  { value: "62%", label: "Lower CPA" },
-  { value: "150+", label: "Brands Scaled" },
+  { value: "500+", label: "Brands Transformed" },
+  { value: "10M+", label: "Social Impressions" },
+  { value: "3x", label: "Avg. Engagement Growth" },
+  { value: "200+", label: "Websites Launched" },
   { value: "98%", label: "Client Retention" },
-  { value: "2.4M+", label: "Leads Generated" },
+  { value: "50K+", label: "Designs Delivered" },
 ];
 
 const MetricMarquee = () => {
