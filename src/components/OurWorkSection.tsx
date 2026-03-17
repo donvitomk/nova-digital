@@ -161,17 +161,17 @@ const OurWorkSection = () => {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.2, 0, 0, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl bg-background rounded-2xl shadow-2xl overflow-hidden border border-border"
+            className="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
           >
 
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:bg-background transition-colors"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:bg-background transition-colors"
             >
               <X size={18} />
             </button>
 
-            <div className="p-8 max-h-[60vh] overflow-y-auto">
+            <div className="p-8 overflow-y-auto flex-1">
               <p className="text-xs text-primary font-medium uppercase tracking-wide mb-2">{selectedProject.category}</p>
               <h3 className="text-2xl font-bold text-foreground mb-4">{selectedProject.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">{selectedProject.description}</p>
