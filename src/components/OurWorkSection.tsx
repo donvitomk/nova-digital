@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const projects = [
   {
@@ -83,11 +85,49 @@ const projects = [
   },
 ];
 
+type ProjectType = typeof projects[0] & { id?: string; isDb?: boolean };
+
 const OurWorkSection = () => {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const { data: dbProjects } = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("projects").select("*").order("display_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const { data: dbGallery } = useQuery({
+    queryKey: ["project-gallery", selectedProject?.id],
+    queryFn: async () => {
+      if (!selectedProject?.id) return [];
+      const { data, error } = await supabase.from("project_gallery").select("*").eq("project_id", selectedProject.id).order("display_order");
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!selectedProject?.id && !!selectedProject?.isDb,
+  });
+
+  const allProjects: ProjectType[] = [
+    ...(dbProjects && dbProjects.length > 0
+      ? dbProjects.map((p) => ({
+          id: p.id,
+          isDb: true as const,
+          title: p.title,
+          category: p.category,
+          color: p.color,
+          description: p.description,
+          services: p.services || [],
+          gallery: [],
+        }))
+      : []),
+    ...projects,
+  ];
+
+  const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
 
   return (
     <>
@@ -189,31 +229,41 @@ const OurWorkSection = () => {
 
               <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wide">Project Gallery</h4>
               <div className="flex flex-col gap-4">
-                {selectedProject.gallery.map((item, i) => (
-                  <div
-                    key={i}
-                    className={`bg-gradient-to-br ${item.color} rounded-xl w-full aspect-video flex items-center justify-center relative overflow-hidden`}
-                  >
-                    {item.type === "video" && "src" in item && item.src ? (
-                      <video
-                        src={item.src as string}
-                        controls
-                        className="w-full h-full object-cover rounded-xl"
-                      />
-                    ) : item.type === "video" ? (
-                      <>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-14 h-14 rounded-full bg-foreground/10 backdrop-blur-sm flex items-center justify-center">
-                            <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-foreground/50 border-b-[10px] border-b-transparent ml-1" />
+                {selectedProject.isDb && dbGallery && dbGallery.length > 0
+                  ? dbGallery.map((item) => (
+                      <div key={item.id} className="rounded-xl w-full aspect-video overflow-hidden relative bg-muted">
+                        {item.type === "video" && item.file_url ? (
+                          <video src={item.file_url} controls className="w-full h-full object-cover" />
+                        ) : item.file_url ? (
+                          <img src={item.file_url} alt={item.label} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className={`w-full h-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
+                            <span className="text-sm font-medium text-foreground/50">{item.label}</span>
                           </div>
-                        </div>
-                        <span className="absolute bottom-3 left-3 text-sm font-medium text-foreground/50">{item.label}</span>
-                      </>
-                    ) : (
-                      <span className="text-sm font-medium text-foreground/50">{item.label}</span>
-                    )}
-                  </div>
-                ))}
+                        )}
+                      </div>
+                    ))
+                  : selectedProject.gallery.map((item, i) => (
+                      <div
+                        key={i}
+                        className={`bg-gradient-to-br ${item.color} rounded-xl w-full aspect-video flex items-center justify-center relative overflow-hidden`}
+                      >
+                        {item.type === "video" && "src" in item && item.src ? (
+                          <video src={item.src as string} controls className="w-full h-full object-cover rounded-xl" />
+                        ) : item.type === "video" ? (
+                          <>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-14 h-14 rounded-full bg-foreground/10 backdrop-blur-sm flex items-center justify-center">
+                                <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-foreground/50 border-b-[10px] border-b-transparent ml-1" />
+                              </div>
+                            </div>
+                            <span className="absolute bottom-3 left-3 text-sm font-medium text-foreground/50">{item.label}</span>
+                          </>
+                        ) : (
+                          <span className="text-sm font-medium text-foreground/50">{item.label}</span>
+                        )}
+                      </div>
+                    ))}
               </div>
             </div>
           </motion.div>
