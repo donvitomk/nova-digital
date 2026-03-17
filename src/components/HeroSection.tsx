@@ -51,7 +51,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0, 0, 1] }}
           className="text-5xl sm:text-6xl lg:text-[5rem] font-bold tracking-[-0.04em] leading-[0.95] text-foreground text-balance max-w-4xl mx-auto"
         >
-          Scale at the speed of light.
+          Your brand needs<br />better <span className="inline-block px-5 py-1 rounded-2xl bg-primary text-primary-foreground">content</span>
         </motion.h1>
 
         <motion.p
